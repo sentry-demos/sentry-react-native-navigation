@@ -1,5 +1,3 @@
-// eslint-disable no-unused-vars
-
 import React from 'react';
 import {
   Options,
@@ -212,4 +210,3 @@ class LayoutsScreen extends NavigationComponent<NavigationComponentProps, State>
 }
 
 export default Sentry.wrap(LayoutsScreen);
-//export default LayoutsScreen;

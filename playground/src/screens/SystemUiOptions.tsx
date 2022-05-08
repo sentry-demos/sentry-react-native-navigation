@@ -73,7 +73,6 @@ class SystemUiOptions extends React.Component<NavigationComponentProps, State> {
 
   render() {
     return (
-      // <Sentry.Profiler name="SomeChild">
       <View style={style.container}>
         <Root componentId={this.props.componentId} style={style.root}>
           <Image style={style.image} source={require('../../img/city.png')} fadeDuration={0} />
@@ -133,8 +132,6 @@ class SystemUiOptions extends React.Component<NavigationComponentProps, State> {
           <Button label="Open Right" onPress={() => this.open('right')} />
         </Root>
       </View>
-
-      // </Sentry.Profiler>
     );
   }
   onPaletteValueChange = (value: string, _: object) => {
