@@ -7,6 +7,7 @@ import Button from '../components/Button';
 import Navigation from '../services/Navigation';
 import Screens from './Screens';
 import testIDs from '../testIDs';
+import * as Sentry from '@sentry/react-native';
 
 interface State {
   statusBarVisible: boolean;
@@ -29,7 +30,7 @@ const colors = [
   '#8B1079',
 ];
 
-export default class SystemUiOptions extends React.Component<NavigationComponentProps, State> {
+class SystemUiOptions extends React.Component<NavigationComponentProps, State> {
   static options(): Options {
     return {
       statusBar: {
@@ -72,6 +73,7 @@ export default class SystemUiOptions extends React.Component<NavigationComponent
 
   render() {
     return (
+      // <Sentry.Profiler name="SomeChild">
       <View style={style.container}>
         <Root componentId={this.props.componentId} style={style.root}>
           <Image style={style.image} source={require('../../img/city.png')} fadeDuration={0} />
@@ -131,6 +133,8 @@ export default class SystemUiOptions extends React.Component<NavigationComponent
           <Button label="Open Right" onPress={() => this.open('right')} />
         </Root>
       </View>
+
+      // </Sentry.Profiler>
     );
   }
   onPaletteValueChange = (value: string, _: object) => {
@@ -257,3 +261,5 @@ const style = StyleSheet.create({
     marginBottom: 16,
   },
 });
+
+export default Sentry.withProfiler(SystemUiOptions);

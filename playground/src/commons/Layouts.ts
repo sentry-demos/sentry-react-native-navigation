@@ -21,3 +21,4 @@ const component = <P = {}>(
 };
 
 export { stack, component };
+// export default Sentry.withProfiler(stack);

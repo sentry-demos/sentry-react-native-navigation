@@ -1,3 +1,5 @@
+// eslint-disable no-unused-vars
+
 import React from 'react';
 import {
   Options,
@@ -13,6 +15,7 @@ import Screens from './Screens';
 import Navigation from '../services/Navigation';
 import { stack } from '../commons/Layouts';
 import { Text } from 'react-native';
+import * as Sentry from '@sentry/react-native';
 
 const {
   WELCOME_SCREEN_HEADER,
@@ -27,8 +30,7 @@ const {
 interface State {
   componentDidAppear: boolean;
 }
-
-export default class LayoutsScreen extends NavigationComponent<NavigationComponentProps, State> {
+class LayoutsScreen extends NavigationComponent<NavigationComponentProps, State> {
   constructor(props: NavigationComponentProps) {
     super(props);
     Navigation.events().bindComponent(this);
@@ -208,3 +210,6 @@ export default class LayoutsScreen extends NavigationComponent<NavigationCompone
     });
   };
 }
+
+export default Sentry.wrap(LayoutsScreen);
+//export default LayoutsScreen;
