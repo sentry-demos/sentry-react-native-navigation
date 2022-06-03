@@ -35,7 +35,23 @@ class LayoutsScreen extends NavigationComponent<NavigationComponentProps, State>
     this.state = {
       componentDidAppear: false,
     };
+    console.log('about to fetch!!!!!');
+
+    fetch(`https://application-monitoring-flask-dot-sales-engineering-sf.appspot.com/products`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log('> Product response: ' + json);
+      })
+      .catch((err) => console.log('> api Erorr: ', err));
+
+    console.log('after to fetch!!!!!');
   }
+
   componentWillAppear() {
     console.log('componentWillAppear:', this.props.componentId);
   }
